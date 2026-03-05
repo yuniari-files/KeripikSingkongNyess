@@ -1,0 +1,603 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+font-family: "'Segoe UI', 'Helvetica Neue', Arial", sans-serif;
+  background-color: #fff8eb;
+  padding-top: 80px;
+}
+
+a {
+  color: #000;
+}
+
+/* header */
+.icon {
+  height: 50px;     /* Atur tinggi sesuai kebutuhan (misal 50px) */
+  width: auto; 
+  float: left;
+  margin-left: 5px;     /* Biarkan lebar otomatis agar gambar tidak gepeng/distorsi */
+  object-fit: contain; /* Memastikan gambar tetap dalam proporsi yang benar */
+}
+
+.logo {
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+.header {
+  background-color: #ff9c5f;
+  box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 0.6em;
+  z-index: 1000;
+}
+
+/* add top padding equal to header height so content doesn't hide */
+body {
+  padding-top: 56px;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #ffebc7;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: #ffebc7;
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: block;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+  float: right;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+.container-1 {
+  /* span full viewport width regardless of parent padding */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  display: block;
+  padding: 0;
+}
+
+/* mobile tweak: remove top margin so header sits flush */
+@media (min-width: 100vw) {
+  body {
+    margin: 0;
+  }
+
+  .container-1 {
+    margin-top: 0;
+  }
+
+  .bodi {
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+ .footer {
+    width: 100%;
+    margin: 0 10px;
+    justify-content: center;
+  }
+
+  .footer p {
+    font-size: 10px;
+  }
+
+  .footer .anggota {
+    flex-direction: row;
+    gap: 10px;
+    font-size: 10px;
+    justify-content: center;
+}
+
+
+/* Styling untuk Judul (Heading) */
+h1 {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 800; /* Membuat font sangat tebal */
+    font-size: 42px;  /* Ukuran besar sesuai referensi */
+    color: #333333;   /* Abu-abu gelap, bukan hitam pekat */
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px; /* Sedikit merapat untuk kesan modern */
+}
+
+/* Styling untuk Deskripsi (Paragraph) */
+p {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #666666;   /* Warna teks lebih muda dari judul */
+    line-height: 1.6;  /* Memberikan ruang agar mudah dibaca */
+}
+
+.footer {
+  text-align: center;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #666666;   /* Warna teks lebih muda dari judul */
+  line-height: 1.6;  /* Memberikan ruang agar mudah dibaca */
+  padding: 20px;
+  margin: 0 auto;
+  max-width: calc(100% - 80px); /* keep the 40px side gutters */
+}
+
+.footer h3 {
+  color: #333333;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.mahasiswa {
+  text-align: center;
+}
+
+.anggota {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 20px;
+}
+
+  }
+
+/* animasi card masuk satu persatu */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* animasi slide dari kiri ke kanan */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* animasi slide dari kanan ke kiri */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*media close */
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin: 25px;
+  justify-content: center;
+}
+
+.products-grid :hover .product-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  /* smooth transition untuk hover effect */
+  transition: all 0.3s ease;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-columns: subgrid;
+  border: 1px solid var(--border);
+  /* ensure each card stays reasonably wide */
+  min-width: 320px;
+  /* default state sebelum animasi dipicu */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* class yang dipicu oleh JS untuk trigger animasi */
+.product-card.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* stagger delay untuk setiap card saat animate-in */
+.product-card.animate-in:nth-child(1) { animation-delay: 0s; }
+.product-card.animate-in:nth-child(2) { animation-delay: 0.1s; }
+.product-card.animate-in:nth-child(3) { animation-delay: 0.2s; }
+.product-card.animate-in:nth-child(4) { animation-delay: 0.3s; }
+.product-card.animate-in:nth-child(5) { animation-delay: 0.4s; }
+.product-card.animate-in:nth-child(6) { animation-delay: 0.5s; }
+.product-card.animate-in:nth-child(n+7) { animation-delay: 0.6s; }
+
+
+
+.product-card:hover {
+  /* shadow lebih dramatis saat hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  /* kartu naiknya sedikit */
+  transform: translateY(-4px);
+}
+
+.product-image {
+  height: 260px;
+  width: 100%;
+  object-fit: cover;
+  grid-column: 1 / -1;
+  background-color: #f2f2f2;
+}
+
+.product-details {
+  padding: 1rem;
+  grid-column: 1 / -1;
+}
+
+.product-name {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: var(--dark);
+  letter-spacing: 0.02em;
+}
+
+.product-category {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 300;
+}
+
+.product-price {
+  padding: 0.8rem 1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--primary);
+  background-color: rgb(255, 212, 155);
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 0.02em;
+}
+
+.discount {
+  font-size: 0.75rem;
+  background-color: var(--accent);
+  color: var(--dark);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.product-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 1rem;
+  grid-column: 1 / -1;
+}
+
+.wishlist-btn {
+  background-color: white;
+  border: 1px solid var(--border);
+  padding: 0.6rem;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+
+.brand .content {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.brand .content.animate-in {
+  animation: slideInFromLeft 0.7s ease-out forwards;
+}
+
+.brand .image-container {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.brand .image-container.animate-in {
+  animation: slideInFromRight 0.7s ease-out forwards;
+}
+
+
+.brand-image {
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+  float: right;
+  margin-right: 10vw;
+  margin-top: 20px;
+}
+
+
+  /* content area adjustments */
+  .content {
+    margin: 20px auto;
+    max-width: 100%;
+    padding: 0 10px;
+    text-align: left;
+  }
+
+  button {
+    padding: 10px 20px;
+    color: rgb(71, 4, 4);
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin-left: 65px;
+  }
+  
+  .btn {
+  background: rgb(255, 212, 155);
+  border-color: #ff9c5f;
+  display: block;
+  margin: 20px auto;
+  padding: 12px 30px;
+  color: rgb(70, 3, 3);
+  border-radius: 5px;
+}
+.btn:hover {
+   background: #ff9c5f;
+}
+
+  /* footer margins too */
+  .footer {
+    width: 100%;
+    margin: 0 10px;
+    justify-content: center;
+  }
+
+  .footer p {
+    font-size: 10px;
+  }
+
+  .footer .anggota {
+    flex-direction: row;
+    gap: 10px;
+    font-size: 10px;
+    justify-content: center;
+}
+
+.content {
+  max-width: 800px;
+  margin: 50px;
+text-align: left;
+margin-left: 65px;
+}
+
+
+/* Styling untuk Judul (Heading) */
+h1 {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 800; /* Membuat font sangat tebal */
+    font-size: 42px;  /* Ukuran besar sesuai referensi */
+    color: #333333;   /* Abu-abu gelap, bukan hitam pekat */
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px; /* Sedikit merapat untuk kesan modern */
+}
+
+/* Styling untuk Deskripsi (Paragraph) */
+p {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #666666;   /* Warna teks lebih muda dari judul */
+    line-height: 1.6;  /* Memberikan ruang agar mudah dibaca */
+}
+
+.footer {
+  text-align: center;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #666666;   /* Warna teks lebih muda dari judul */
+  line-height: 1.6;  /* Memberikan ruang agar mudah dibaca */
+  padding: 50px;
+  margin: 0 auto;
+  margin-top: 10px;
+  max-width: calc(100% - 80px); /* keep the 40px side gutters */
+}
+
+.footer h3 {
+  color: #333333;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.mahasiswa {
+  text-align: center;
+  font-weight: bold;
+}
+
+.anggota {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.nama, .nim {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nama {
+  align-items: flex-start;
+}
+
+.nim {
+  align-items: center;
+}

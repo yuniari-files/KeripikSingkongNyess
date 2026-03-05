@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruksi Pembayaran - Keripik Nyess</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+    
+        .instruksi-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .bank-box {
+            background: #f9f9f9;
+            border: 1px dashed #ff69b4; /* Warna pink sesuai seleramu */
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .rekening {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #d81b60;
+            display: block;
+            margin: 10px 0;
+        }
+        .btn-wa {
+            background-color: #25D366;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="instruksi-container">
+    <h1>Pesanan Berhasil!</h1>
+    <p>Silakan lakukan pembayaran agar pesananmu segera kami proses.</p>
+
+    <div class="bank-box">
+        <p>Transfer ke Rekening Bank BCA:</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span class="rekening" id="nomorTujuan">400-044-1673</span>
+            <button onclick="salinNomor()" style="background: none; border: none; cursor: pointer; color: #888;">
+                <i class="fas fa-copy" id="copyIcon" style="font-size: 1.2em;"></i>
+            </button>
+        </div>
+        <p>Atas Nama: <strong>Yuniari Nur Rahmawati</strong></p>
+        <small id="statusSalin" style="color: green; display: none;">Berhasil disalin!</small>
+    </div>
+
+    <h3>Tata Cara Transfer:</h3>
+    <ul style="text-align: left; display: inline-block; margin: 15px;">
+        <li>Buka aplikasi Mobile Banking atau pergi ke ATM.</li>
+        <li>Masukkan nomor rekening di atas.</li>
+        <li>Pastikan nama penerima sesuai.</li>
+        <li>Simpan bukti transfer (screenshot/foto).</li>
+    </ul>
+
+    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+    <p>Sudah transfer? Konfirmasi ke admin ya!</p>
+    <br>
+    <a href="https://wa.me/6285608179360?text=Halo%20Admin,%20saya%20sudah%20transfer%20untuk%20pesanan%20Keripik%20Nyess" class="btn-wa">
+        <i class="fab fa-whatsapp"></i>  Konfirmasi via WhatsApp
+    </a>
+    
+    <br><br>
+    <a href="index.html" style="color: #888; text-decoration: none; font-size: 0.9em;">Kembali ke Beranda</a>
+</div>
+
+<script>
+function salinNomor() {
+    // Ambil teks dari elemen nomor
+    const nomor = document.getElementById("nomorTujuan").innerText;
+    const status = document.getElementById("statusSalin");
+    const icon = document.getElementById("copyIcon");
+
+    // Gunakan Clipboard API
+    navigator.clipboard.writeText(nomor).then(() => {
+        // Tampilkan teks status "Berhasil disalin"
+        status.style.display = "block";
+        
+        // Ubah ikon sementara jadi tanda centang
+        icon.classList.remove("fa-copy");
+        icon.classList.add("fa-check");
+        icon.style.color = "green";
+
+        // Sembunyikan kembali setelah 2 detik
+        setTimeout(() => {
+            status.style.display = "none";
+            icon.classList.remove("fa-check");
+            icon.classList.add("fa-copy");
+            icon.style.color = "#888";
+        }, 2000);
+    }).catch(err => {
+        console.error('Gagal menyalin: ', err);
+    });
+}
+</script>
+
+</body>
+</html>

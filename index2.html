@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pemesanan</title>
+    <link rel="stylesheet" href="style2.css">
+
+</head>
+<body>
+<h1>Form Pemesanan Keripik Singkong Nyess</h1>
+
+<div class="form">
+<form id="formPesanan" name="Pesanan-Keripik-Nyess" method="POST" data-netlify="true" action="/success">
+  
+  <input type="hidden" name="form-name" value="Pesanan-Keripik-Nyess" />
+
+  <label for="nama">Nama:</label>
+  <input type="text" name="nama" placeholder="Nama" required>
+
+  <label for="wa">Nomor WhatsApp Aktif:</label>
+  <input type="tel" name="whatsapp" placeholder="0812xxxx" required>
+
+  <label for="alamat">Alamat Lengkap Pengiriman:</label>
+  <textarea name="alamat" rows="3" placeholder="Jl. Nama Jalan, No. Rumah, Kecamatan, Kota" required></textarea>
+
+  <label>Pilih Produk & Jumlah:</label>
+<div class="produk-list" style="background: #fff5f8; padding: 15px; border-radius: 12px; border: 1px solid #ff69b4; margin-bottom: 20px;">
+  
+  <div class="item-produk" style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; background: white; padding: 10px; border-radius: 8px;">
+    <img src="crisp.png" alt="Original" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+    <div style="flex-grow: 1;">
+      <label style="display: block; font-weight: bold;"><input type="checkbox" class="produk-check" data-harga="15000" value="Original"> Nyess Original</label>
+      <span style="font-size: 0.85em; color: #888;">Rp 12.000</span>
+    </div>
+    <input type="number" class="produk-qty" name="qty_original" min="1" value="1" style="width: 45px; padding: 5px; display: none; border: 1px solid #ff69b4; border-radius: 4px;">
+  </div>
+
+  <div class="item-produk" style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; background: white; padding: 10px; border-radius: 8px;">
+    <img src="cripsdua.png" alt="Pedas" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+    <div style="flex-grow: 1;">
+      <label style="display: block; font-weight: bold;"><input type="checkbox" class="produk-check" data-harga="17000" value="Pedas"> Nyess Pedas</label>
+      <span style="font-size: 0.85em; color: #888;">Rp 15.000</span>
+    </div>
+    <input type="number" class="produk-qty" name="qty_pedas" min="1" value="1" style="width: 45px; padding: 5px; display: none; border: 1px solid #ff69b4; border-radius: 4px;">
+  </div>
+
+  <div class="item-produk" style="display: flex; align-items: center; gap: 15px; background: white; padding: 10px; border-radius: 8px;">
+    <img src="crisptiga.png" alt="Manis" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+    <div style="flex-grow: 1;">
+      <label style="display: block; font-weight: bold;"><input type="checkbox" class="produk-check" data-harga="16000" value="Manis"> Nyess Manis</label>
+      <span style="font-size: 0.85em; color: #888;">Rp 15.000</span>
+    </div>
+    <input type="number" class="produk-qty" name="qty_manis" min="1" value="1" style="width: 45px; padding: 5px; display: none; border: 1px solid #ff69b4; border-radius: 4px;">
+  </div>
+
+  <hr style="border: 0.5px solid #ff69b4; margin: 15px 0;">
+  
+  <div style="font-weight: bold; font-size: 1.1em; display: flex; justify-content: space-between; color: #d81b60;">
+    <span>Total Pembayaran:</span>
+    <span id="totalTampilan">Rp 0</span>
+    <input type="hidden" name="total_pembayaran" id="totalInput">
+  </div>
+</div>
+
+  <fieldset>
+    <legend>Pilih Metode Pembayaran:</legend>
+    
+    <label>
+      <input type="radio" name="pembayaran" value="Transfer" required> Transfer Bank
+    </label><br>
+    
+    <label>
+      <input type="radio" name="pembayaran" value="DANA"> DANA
+    </label><br>
+    
+    <label>
+      <input type="radio" name="pembayaran" value="GOPAY"> GOPAY
+    </label><br>
+    
+    <label>
+      <input type="radio" name="pembayaran" value="COD"> Cash On Delivery (COD) 
+      <small style="color: red;">*Hanya berlaku di area Malang Kota</small>
+    </label>
+  </fieldset>
+
+  <button type="submit" style="margin-top: 20px;">Pesan Sekarang</button>
+</form>
+
+<button class="btn-kembali">
+    <a href="index.html">Kembali ke Beranda</a>
+</button>
+</div>
+
+<script src="script.js" ></script>
+</body>
+</html>
