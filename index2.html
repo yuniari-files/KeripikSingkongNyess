@@ -63,26 +63,27 @@
   </div>
 </div>
 
-  <fieldset>
-    <legend>Pilih Metode Pembayaran:</legend>
-    
-    <label>
-      <input type="radio" name="pembayaran" value="Transfer" required> Transfer Bank
-    </label><br>
-    
-    <label>
-      <input type="radio" name="pembayaran" value="DANA"> DANA
-    </label><br>
-    
-    <label>
-      <input type="radio" name="pembayaran" value="GOPAY"> GOPAY
-    </label><br>
-    
-    <label>
-      <input type="radio" name="pembayaran" value="COD"> Cash On Delivery (COD) 
-      <small style="color: red;">*Hanya berlaku di area Malang Kota</small>
-    </label>
-  </fieldset>
+  <fieldset style="border: 1px solid #e67e22; border-radius: 12px; padding: 20px; background: #fff5f8;">
+                <legend style="color: #d35400; font-weight: bold; padding: 0 10px;">Metode Pembayaran</legend>
+                <div class="payment-options" style="display: grid; gap: 10px;">
+                    <label style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
+                        <input type="radio" name="pembayaran" value="Transfer Bank" required style="margin-right: 15px;"> Transfer Bank
+                    </label>
+                    <label style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
+                        <input type="radio" name="pembayaran" value="DANA" style="margin-right: 15px;"> DANA
+                    </label>
+                    <label style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
+                        <input type="radio" name="pembayaran" value="GOPAY" style="margin-right: 15px;"> GOPAY
+                    </label>
+                    <label style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
+                        <input type="radio" name="pembayaran" value="COD" style="margin-right: 15px;">
+                        <div>
+                            <span>COD (Bayar di Tempat)</span>
+                            <small style="color: red; display: block;">*Hanya berlaku di area Malang Kota</small>
+                        </div>
+                    </label>
+                </div>
+            </fieldset>
 
   <button type="submit" style="margin-top: 20px;">Pesan Sekarang</button>
 </form>
@@ -96,6 +97,7 @@
 </body>
 
 </html>
+
 
 
 
