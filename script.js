@@ -78,7 +78,7 @@ qtys.forEach(q => q.addEventListener('input', hitungTotal));
   const form = document.getElementById('formPesanan');
   if (form) {
     form.addEventListener('submit', function(e) {
-      e.preventDefault();
+     // e.preventDefault();
       
       // Mengambil nilai radio button yang dipilih
       const selectedRadio = document.querySelector('input[name="pembayaran"]:checked');
@@ -106,4 +106,5 @@ qtys.forEach(q => q.addEventListener('input', hitungTotal));
     });
 
   }
+
 
