@@ -79,32 +79,33 @@ qtys.forEach(q => q.addEventListener('input', hitungTotal));
   if (form) {
     form.addEventListener('submit', function(e) {
      // e.preventDefault();
-      
-      // Mengambil nilai radio button yang dipilih
-      const selectedRadio = document.querySelector('input[name="pembayaran"]:checked');
-      if (!selectedRadio) {
-        alert('Pilih metode pembayaran terlebih dahulu.');
+ 
+  })};
+
+  function keHalamanInstruksi() {
+    // Mencari elemen input radio yang dipilih
+    const pilihanMetode = document.querySelector('input[name="pembayaran"]:checked');
+
+    // Validasi jika user belum memilih
+    if (!pilihanMetode) {
+        alert("Silakan pilih metode pembayaran dulu ya, manis!");
         return;
-      }
-      const metodePembayaran = selectedRadio.value;
+    }
 
-      // Menentukan halaman tujuan berdasarkan pilihan
-      let targetPage = 'instruksi-transfer.html'; // Default page
+    // Ambil nilai (value) dari pilihan tersebut
+    const metode = pilihanMetode.value;
 
-      if (metodePembayaran === 'Transfer') {
-        targetPage = 'instruksi-transfer.html';
-      } else if (metodePembayaran === 'DANA') {
-        targetPage = 'instruksi-dana.html';
-      } else if (metodePembayaran === 'GOPAY') {
-        targetPage = 'instruksi-gopay.html';
-      } else if (metodePembayaran === 'COD') {
-        targetPage = 'instruksi-cod.html';
-      }
-
-      // Redirect ke halaman instruksi pembayaran
-      window.location.href = targetPage;
-    });
-
-  }
+    // Arahkan ke file HTML masing-masing
+    if (metode === "Transfer") {
+        window.location.href = "instruksi-transfer.html";
+    } else if (metode === "DANA") {
+        window.location.href = "instruksi-dana.html";
+    } else if (metode === "GOPAY") {
+        window.location.href = "instruksi-gopay.html";
+    } else if (metode === "COD") {
+        window.location.href = "instruksi-cod.html";
+    }
+}
+ 
 
 
