@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pemesanan</title>
+    <link rel="stylesheet" href="style2.css">
+
+</head>
+<body>
+
+<fieldset style="border: 1px solid #ff69b4; border-radius: 12px; padding: 20px; background: #fff5f8;">
+    <legend style="color: #d81b60; font-weight: bold; padding: 0 10px;">Metode Pembayaran</legend>
+
+    <div class="payment-options" style="display: grid; gap: 10px;">
+        <label class="pay-card" style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
+            <input type="radio" name="pembayaran" value="Transfer" required style="margin-right: 15px;">
+            <span>Transfer Bank</span>
+        </label>
+
+        <label class="pay-card" style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
+            <input type="radio" name="pembayaran" value="DANA" style="margin-right: 15px;">
+            <span>DANA</span>
+        </label>
+
+        <label class="pay-card" style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
+            <input type="radio" name="pembayaran" value="GOPAY" style="margin-right: 15px;">
+            <span>GOPAY</span>
+        </label>
+
+        <label class="pay-card" style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
+            <input type="radio" name="pembayaran" value="COD" style="margin-right: 15px;">
+            <div>
+                <span style="display: block;">COD (Bayar di Tempat)</span>
+                <small style="color: #d81b60; font-size: 0.75em;">*Khusus Area Malang Kota</small>
+            </div>
+        </label>
+    </div>
+</fieldset>
+
+<button type="button" onclick="keHalamanInstruksi()">
+    Bayar Sekarang
+</button>
+
+<script src="script.js"></script>
+</body>
+  </html>
