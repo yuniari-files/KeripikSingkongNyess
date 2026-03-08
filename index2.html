@@ -11,7 +11,7 @@
 <h1>Form Pemesanan Keripik Singkong Nyess</h1>
 
 <div class="form">
-<form id="formPesanan" name="Pesanan-Keripik-Nyess" method="POST" data-netlify="true" action="sukses.html">
+<form id="formPesanan" name="Pesanan-Keripik-Nyess" method="POST" data-netlify="true" action="https://script.google.com/macros/s/AKfycbwa9-uo5WJNzHHU53LSL3wBf6_XKYl0K9Fi966lOYdKc9ZlCb410THvtQ3hHPDX8gxlwA/exec">
   
   <input type="hidden" name="form-name" value="Pesanan-Keripik-Nyess" />
 
@@ -25,7 +25,7 @@
   <textarea name="alamat" rows="3" placeholder="Jl. Nama Jalan, No. Rumah, Kecamatan, Kota" required></textarea>
 
   <label>Pilih Produk & Jumlah:</label>
-<div class="produk-list" style="background: #fff5f8; padding: 15px; border-radius: 12px; border: 1px solid #ff69b4; margin-bottom: 20px;">
+<div class="produk-list" style="background: #fff6ed; padding: 15px; border-radius: 12px; border: 1px solid #ff69b4; margin-bottom: 20px;">
   
   <div class="item-produk" style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px; background: white; padding: 10px; border-radius: 8px;">
     <img src="crisp.png" alt="Original" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
@@ -54,20 +54,20 @@
     <input type="number" class="produk-qty" name="qty_manis" min="1" value="1" style="width: 45px; padding: 5px; display: none; border: 1px solid #ff69b4; border-radius: 4px;">
   </div>
 
-  <hr style="border: 0.5px solid #ff69b4; margin: 15px 0;">
+  <hr style="border: 0.5px solid #e67e22; margin: 15px 0;">
   
-  <div style="font-weight: bold; font-size: 1.1em; display: flex; justify-content: space-between; color: #d81b60;">
+  <div style="font-weight: bold; font-size: 1.1em; display: flex; justify-content: space-between; color: #be6211;">
     <span>Total Pembayaran:</span>
     <span id="totalTampilan">Rp 0</span>
     <input type="hidden" name="total_pembayaran" id="totalInput">
   </div>
 </div>
 
-  <fieldset style="border: 1px solid #e67e22; border-radius: 12px; padding: 20px; background: #fff5f8;">
+<fieldset style="border: 1px solid #e67e22; border-radius: 12px; padding: 20px; background: #fff5f8;">
                 <legend style="color: #d35400; font-weight: bold; padding: 0 10px;">Metode Pembayaran</legend>
                 <div class="payment-options" style="display: grid; gap: 10px;">
                     <label style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
-                        <input type="radio" name="pembayaran" value="Transfer Bank" required style="margin-right: 15px;"> Transfer Bank
+                        <input type="radio" name="pembayaran" value="TRANSFER" required style="margin-right: 15px;"> Transfer Bank
                     </label>
                     <label style="display: flex; align-items: center; background: white; padding: 10px; border-radius: 8px; border: 1px solid #eee; cursor: pointer;">
                         <input type="radio" name="pembayaran" value="DANA" style="margin-right: 15px;"> DANA
@@ -85,7 +85,7 @@
                 </div>
             </fieldset>
 
-  <button type="submit" style="margin-top: 20px;">Pesan Sekarang</button>
+  <button type="submit" style="margin-top: 20px;">Buat Pesanan</button>
 </form>
 
 <button class="btn-kembali">
@@ -93,17 +93,6 @@
 </button>
 </div>
 
-    <script src="script.js"></script>
+<script src="script.js" ></script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
