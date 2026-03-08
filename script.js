@@ -1,30 +1,19 @@
- // Intersection Observer untuk trigger animasi saat grid terlihat
+  // 1. Inisialisasi Observer untuk Animasi (Tetap dipertahankan)
   const productsGrid = document.querySelector('.products-grid');
   const productCards = document.querySelectorAll('.product-card');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Grid sudah terlihat di viewport - tambah class animate-in ke semua cards
-        productCards.forEach(card => {
-          card.classList.add('animate-in');
-        });
+        productCards.forEach(card => card.classList.add('animate-in'));
       } else {
-        // Grid sudah keluar dari viewport - hapus class untuk siap animasi ulang
-        productCards.forEach(card => {
-          card.classList.remove('animate-in');
-        });
+        productCards.forEach(card => card.classList.remove('animate-in'));
       }
     });
-  }, {
-    threshold: 0.1
-  });
+  }, { threshold: 0.1 });
 
-  if (productsGrid) {
-    observer.observe(productsGrid);
-  }
+  if (productsGrid) observer.observe(productsGrid);
 
-  // Intersection Observer untuk brand section
   const brandSection = document.querySelector('.brand');
   const brandContent = document.querySelector('.brand .content');
   const brandImageContainer = document.querySelector('.brand .image-container');
@@ -32,80 +21,100 @@
   const brandObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Brand section terlihat - tambah class animate-in
         if (brandContent) brandContent.classList.add('animate-in');
         if (brandImageContainer) brandImageContainer.classList.add('animate-in');
       } else {
-        // Brand section keluar viewport - hapus class untuk siap animasi ulang
         if (brandContent) brandContent.classList.remove('animate-in');
         if (brandImageContainer) brandImageContainer.classList.remove('animate-in');
       }
     });
-  }, {
-    threshold: 0.1
-  });
+  }, { threshold: 0.1 });
 
-  if (brandSection) {
-    brandObserver.observe(brandSection);
-  }
+  if (brandSection) brandObserver.observe(brandSection);
 
+  // 2. Logika Perhitungan Total Harga
   const checks = document.querySelectorAll('.produk-check');
-const qtys = document.querySelectorAll('.produk-qty');
-const totalTampilan = document.getElementById('totalTampilan');
-const totalInput = document.getElementById('totalInput');
+  const qtys = document.querySelectorAll('.produk-qty');
+  const totalTampilan = document.getElementById('totalTampilan');
+  const totalInput = document.getElementById('totalInput');
 
 function hitungTotal() {
-    let total = 0;
-    checks.forEach((check, index) => {
-        const qtyInput = qtys[index];
-        if (check.checked) {
-            qtyInput.style.display = "block"; // Munculkan kolom jumlah
-            total += parseInt(check.getAttribute('data-harga')) * parseInt(qtyInput.value);
-        } else {
-            qtyInput.style.display = "none"; // Sembunyikan kolom jumlah
-        }
-    });
-    
-    // Format mata uang Rupiah
-    totalTampilan.innerText = "Rp " + total.toLocaleString('id-ID');
-    totalInput.value = total; // Simpan angka bersih untuk dikirim ke database
+  let total = 0;
+  checks.forEach((check, index) => {
+    const qtyInput = qtys[index];
+    if (check.checked) {
+      qtyInput.style.display = "block";  // Tampilkan input
+      qtyInput.disabled = false;         // Aktifkan agar terkirim ke spreadsheet
+      total += parseInt(check.getAttribute('data-harga')) * parseInt(qtyInput.value);
+    } else {
+      qtyInput.style.display = "none";   // Sembunyikan input
+      qtyInput.disabled = true;          // Nonaktifkan agar TIDAK terkirim
+    }
+  });
+  totalTampilan.innerText = "Rp " + total.toLocaleString('id-ID');
+  totalInput.value = total;
 }
 
-// Jalankan fungsi setiap kali ada perubahan pada checkbox atau input angka
-checks.forEach(c => c.addEventListener('change', hitungTotal));
-qtys.forEach(q => q.addEventListener('input', hitungTotal));
+  checks.forEach(c => c.addEventListener('change', hitungTotal));
+  qtys.forEach(q => q.addEventListener('input', hitungTotal));
 
+  // 3. Logika Pengiriman Form ke Google Sheets & Redirect
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbz97ZDW2fRl6Bm54mbHv0Xt5pR0AthKWnr08upGjQL9dOVBajlZaeWw4g_iEKl42AYYDg/exec';
   const form = document.getElementById('formPesanan');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-     // e.preventDefault();
- 
-  })};
 
-  function keHalamanInstruksi() {
-    // Mencari elemen input radio yang dipilih
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const submitButton = form.querySelector('button[type="submit"]') || form.querySelector('input[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.innerHTML = "Sedang Memproses...";
+    }
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      .then(response => {
+        console.log('Success!', response);
+        // Setelah sukses masuk spreadsheet, langsung ke halaman sukses
+        window.location.href = "sukses.html";
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        alert("Aduh manis, ada gangguan koneksi. Coba lagi ya!");
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = "Pesan Sekarang";
+        }
+      });
+  });
+
+function keHalamanInstruksi() {
+    // 1. Mengambil elemen radio button yang sedang dipilih
     const pilihanMetode = document.querySelector('input[name="pembayaran"]:checked');
 
-    // Validasi jika user belum memilih
+    // 2. Validasi apakah user sudah memilih salah satu metode
     if (!pilihanMetode) {
-        alert("Silakan pilih metode pembayaran dulu ya, manis!");
+        alert("Pilih metode pembayarannya dulu ya, manis! ✨");
         return;
     }
 
-    // Ambil nilai (value) dari pilihan tersebut
+    // 3. Ambil nilai (value) dari elemen yang terpilih
     const metode = pilihanMetode.value;
 
-    // Arahkan ke file HTML masing-masing
-    if (metode === "Transfer") {
-        window.location.href = "instruksi-transfer.html";
-    } else if (metode === "DANA") {
-        window.location.href = "instruksi-dana.html";
-    } else if (metode === "GOPAY") {
-        window.location.href = "instruksi-gopay.html";
-    } else if (metode === "COD") {
-        window.location.href = "instruksi-cod.html";
+    // 4. Arahkan ke halaman yang sesuai
+    switch (metode) {
+        case "Transfer":
+            window.location.href = "instruksi-transfer.html";
+            break;
+        case "DANA":
+            window.location.href = "instruksi-dana.html";
+            break;
+        case "GOPAY":
+            window.location.href = "instruksi-gopay.html";
+            break;
+        case "COD":
+            window.location.href = "instruksi-cod.html";
+            break;
+        default:
+            console.error("Metode tidak dikenali");
     }
 }
- 
-
-
